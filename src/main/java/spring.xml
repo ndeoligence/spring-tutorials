@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--<bean id="circle" class="org.nodexy.intro.Circle"/>-->
+    <bean id="triangle" class="org.nodexy.intro.Triangle" scope="prototype">
+        <property name="points">
+            <list>
+                <ref bean="point"/>
+                <ref bean="point"/>
+                <ref bean="point"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="square" class="org.nodexy.intro.Square" autowire="constructor" scope="prototype"/>
+    <bean id="circle" class="org.nodexy.intro.Circle" scope="prototype">
+        <property name="center">
+            <bean class="org.nodexy.intro.Point" scope="prototype">
+                <constructor-arg value="-1.0"/>
+                <constructor-arg value="0.25"/>
+            </bean>
+        </property>
+        <property name="radius" value="0"/>
+    </bean>
+    <bean id="rectangle" class="org.nodexy.intro.Rectangle" scope="prototype">
+        <constructor-arg ref="point"/>
+        <constructor-arg value="0"/>
+        <constructor-arg type="double" value="0"/>
+    </bean>
+    <bean id="point" class="org.nodexy.intro.Point" scope="prototype" >
+        <constructor-arg value="0.0"/>
+        <constructor-arg value="0.0"/>
+    </bean>
+</beans>
