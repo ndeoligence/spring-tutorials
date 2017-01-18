@@ -10,11 +10,9 @@ public class DrawingApp {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         ShapeDrawer drawer = new ShapeDrawer();
-        Circle c = (Circle) context.getBean("circle");
-        c.setRadius(123);
-        drawer.push(c);
-        Circle c2 = (Circle) context.getBean("circle");
-        drawer.push(c2);
+        drawer.push((Shape) context.getBean("circle"));
+        drawer.push((Shape) context.getBean("circle"));
+        ((Circle) drawer.peek()).setRadius(2);
         drawer.push((Shape) context.getBean("rectangle"));
         drawer.push((Shape) context.getBean("triangle"));
         drawer.push((Shape) context.getBean("square"));

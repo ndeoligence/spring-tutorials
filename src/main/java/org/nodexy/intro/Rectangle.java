@@ -30,6 +30,7 @@ public class Rectangle implements Shape {
         this(0,0);
     }
 
+    @Override
     public void draw() {
         System.out.println(toString());
     }

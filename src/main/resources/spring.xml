@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="triangle" class="org.nodexy.intro.Triangle" scope="prototype"/>
+    <bean id="square" class="org.nodexy.intro.Square" scope="prototype"/>
+    <!--Make the default a unit circle-->
+    <bean id="circle" class="org.nodexy.intro.Circle" scope="prototype">
+        <property name="center">
+            <bean class="org.nodexy.intro.Point"/>
+        </property>
+        <property name="radius" value="1.0"/>
+    </bean>
+    <bean id="rectangle" class="org.nodexy.intro.Rectangle" scope="prototype"/>
+    <bean id="point" class="org.nodexy.intro.Point" autowire="default" scope="prototype"/>
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    <context: annotation-config/>
+</beans>

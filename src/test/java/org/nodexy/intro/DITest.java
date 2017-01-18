@@ -1,11 +1,19 @@
 package org.nodexy.intro;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by phoenix on 12/26/16.
  */
 public class DITest {
+    private ApplicationContext context = null;
+    @BeforeClass
+    protected void setup() {
+        context = new ClassPathXmlApplicationContext("spring.xml");
+    }
     /**
      * No dependency inversion here. Old style of things
      */
@@ -34,9 +42,9 @@ public class DITest {
      */
     @Test public void test3() {
         ShapeDrawer drawer = new ShapeDrawer();
-        drawer.setShape(new Circle(25));
-        drawer.drawShape();
-        drawer.setShape(new Rectangle(90,40));
-        drawer.drawShape();
+        drawer.push(new Circle(25));
+        drawer.drawShapes();
+        drawer.push(new Rectangle(90,40));
+        drawer.drawShapes();
     }
 }

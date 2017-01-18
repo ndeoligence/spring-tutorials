@@ -4,6 +4,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import org.springframework.beans.factory.annotation.Required;
 
 import java.util.Objects;
 
@@ -27,6 +28,7 @@ public class Circle implements Shape {
     public Circle() {
         this(0,0,0);
     }
+    @Override
     public void draw() {
         System.out.println(toString());
     }
@@ -64,7 +66,7 @@ public class Circle implements Shape {
     public Point getCenter() {
         return center.get();
     }
-
+    @Required
     public void setCenter(Point center) {
         this.center.set(center);
     }
